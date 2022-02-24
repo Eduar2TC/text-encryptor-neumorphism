@@ -109,4 +109,112 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    //Themes
+    const toggleButton = document.getElementById('toggle_checkbox');
+    toggleButton.addEventListener('change', toggleTheme, false);
+    const theme = {
+        dark:{
+            /*bg*/
+            '--body-background': '#363636',
+            '--col-bg-color': '#363636',
+            /*font */
+            '--title-text-color':'#FFFFFF',
+            '--body-text-color': '#FFFFFF',
+            /*border shadow cols*/
+            '--col-shadow-left': '#2D2D2D',
+            '--col-shadow-right': '#3F3F3F',
+            //Numeration list bg color
+            '--li-before-bg-color': '#242F40',
+            //Numeration list text color
+            '--li-before-text-color': '#E5E5E5',
+            //Result text color
+            '--li-result-text-color': 'lightgreen',
+            //Link github text color
+            '--link-github-color': '#E5E5E5',
+            //Link hover github text color
+            '--link-github-hover-color': '#CCA43B'
+        },
+        light: {
+            /*bg*/
+            '--body-background': '#FBF8F1',
+            '--col-bg-color': '#F7ECDE',
+            /*font */
+            '--title-text-color': '#191919',
+            '--body-text-color': '#191919',
+            /*border shadow cols*/
+            '--col-shadow-left': '#d1d1cf',
+            '--col-shadow-right': '#ffffff',
+            //Numeration list bg color
+            '--li-before-bg-color': '#E9DAC1',
+            //Numeration list text color
+            '--li-before-text-color': '#54BAB9',
+            //Result text color
+            '--li-result-text-color': '#54BAB9',
+            //Link github text color
+            '--link-github-color': '#191919',
+            //Link hover github text color
+            '--link-github-hover-color': '#219F94'
+        }
+    };
+    function toggleTheme( e ){
+        if( e.target.checked ){
+            useTheme('dark');
+            localStorage.setItem( 'theme', 'dark' );
+        }else{
+            useTheme('light');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+    function useTheme( themeChoice ){
+        /*BG */
+        document.documentElement.style.setProperty(
+            '--body-background', theme[themeChoice]['--body-background']
+        );
+        document.documentElement.style.setProperty(
+            '--col-bg-color', theme[themeChoice]['--col-bg-color']
+        );
+        /*fonts */
+        document.documentElement.style.setProperty(
+            '--title-text-color', theme[themeChoice]['--title-text-color']
+        );
+        document.documentElement.style.setProperty(
+            '--body-text-color', theme[themeChoice]['--body-text-color']
+        );
+        /*border shadow cols*/
+        document.documentElement.style.setProperty(
+            '--col-shadow-left', theme[themeChoice]['--col-shadow-left']
+        );
+        document.documentElement.style.setProperty(
+            '--col-shadow-right', theme[themeChoice]['--col-shadow-right']
+        );
+        //li-bg and color
+        document.documentElement.style.setProperty(
+            '--li-before-bg-color', theme[themeChoice]['--li-before-bg-color']
+        );
+        document.documentElement.style.setProperty(
+            '--li-before-text-color', theme[themeChoice]['--li-before-text-color']
+        );
+        //Result text color
+        document.documentElement.style.setProperty(
+            '--li-result-text-color', theme[themeChoice]['--li-result-text-color']
+        );
+        //Link github color
+        document.documentElement.style.setProperty(
+            '--link-github-color', theme[themeChoice]['--link-github-color']
+        );
+        //Link github hover color
+        document.documentElement.style.setProperty(
+            '--link-github-hover-color', theme[themeChoice]['--link-github-hover-color']
+        );
+    }
+
+    const preferredTheme = localStorage.getItem('theme');
+    if (preferredTheme === 'dark') {
+        useTheme('dark');
+        toggleButton.checked = true;
+    } else {
+        useTheme('light');
+        toggleButton.checked = false;
+    }
+
 });

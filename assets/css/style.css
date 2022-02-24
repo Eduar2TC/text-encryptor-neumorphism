@@ -1,11 +1,45 @@
-:root {
-  /*sunny side */
-  --blue-background: blue;
-  /*dark side */
-  /*general */
-  --white: #fff;
-}
+@media (prefers-color-scheme: dark) {
+ :root {
+  --body-background: #363636;
+  --body-text-color: #FFFFFF;
+  --title-text-color: #FFFFFF;
+  --subtitle-text-color: yellowgreen;
+  --col-bg-color: #363636;
+  --col-title-text-color: #FFFFFF;
+  --input-text-color: #000000;
+  --input-bg-color: #E5E5E5;
+  --input-border-color: #E5E5E5;
+  --textarea-bg-color: #E5E5E5;
+  --outline-color: rebeccapurple;
+  --outline-error-color: #EF3054;
+  --button-bg-color-primary: #E5E5E5;
+  --button-text-color-primary: #242F40;
+  --button-bg-color-secundary: #CCA43B;
+  --button-text-color-secondary: #E5E5E5;
 
+  --col-shadow-left:#2D2D2D;
+  --col-shadow-right:#3F3F3F;
+  
+  --input-shadow-left:#5C5C5C;
+  --input-shadow-right:#FFFFFF;
+
+  --textarea-shadow-left:#C5C5C5;
+  --textarea-shadow-right:#FFFFFF70;
+  
+  --button-secondary-shadow-left: #A78630 ; /*Orange*/
+  --button-secondary-shadow-right: #F1C246;
+  --button-primary-shadow-left: #BCBCBC;
+  --button-primary-shadow-right: #FFFFFF;
+
+  --li-before-bg-color: #242F40;
+  --li-before-text-color: #E5E5E5;
+  --li-result-text-color: lightgreen;
+  --link-github-color: #E5E5E5;
+  --link-github-hover-color: #CCA43B;
+
+ }
+
+}
 html, body {
   height: 100%;
   display: flex;
@@ -13,8 +47,8 @@ html, body {
 }
 body{
     font-family: 'Space Mono', monospace;
-    background-color: #363636;
-    color: #FFFFFF;
+    background-color: var(--body-background);
+    color: var(--body-text-color);
 }
 .container-title{
     display: flex;
@@ -23,7 +57,7 @@ body{
 }
 .container-title .text{
     font-size: 1.2rem;
-    color: yellowgreen;
+    color: var(--title-text-color);
 }
 .container-boxes{
     display: flex;
@@ -35,9 +69,9 @@ body{
     padding: 1rem;
     margin: 1rem;
     border-radius: 0.5rem;
-    background: #363636;
-    box-shadow:  5px 5px 4px #2d2d2d,
-                -5px -5px 4px #3f3f3f;
+    background: var(--col-bg-color);
+    /*box-shadow:  5px 5px 4px var(--col-shadow-left), -5px -5px 4px var(--col-shadow-right); -----------------*/
+    box-shadow:  -1px -1px 4px var(--col-shadow-left), 1px 1px 4px var(--col-shadow-right);
     max-height: 13rem;
 }
 .col input[type = text]{
@@ -47,14 +81,14 @@ body{
     border: 1px transparent;
     /*Neumorphism input*/
     border-radius: 0.3rem;
-    background: #E5E5E5;
-    box-shadow: inset 4px 4px 6px #5c5c5c, inset -4px -4px 6px #ffffff;
+    background: var(--input-bg-color);
+    box-shadow: inset 4px 4px 6px var(--input-shadow-left), inset -4px -4px 6px var(--input-shadow-right);
 }
 .col input[type=text]:focus{
-    outline: rebeccapurple;
+    outline: var(--outline-color);
     outline-style: solid;
     outline-width: 0.2rem;
-    border: 1px #E5E5E5;
+    border: 1px var(--input-border-color); /*fix*/
 }
 .col textarea{
     resize: none;
@@ -63,11 +97,11 @@ body{
     border: 1px transparent;
     font-size: 1.5rem;
     /*Neumorphism area*/
-    background: #E5E5E5;
-    box-shadow: -2px -2px 0px #c5c5c5, 2px 2px 0px #ffffff70;
+    background: var(--textarea-bg-color);
+    box-shadow: -2px -2px 0px var(--textarea-shadow-left), 2px 2px 0px var(--textarea-shadow-right);
 }
 .col textarea:focus{
-    outline: rebeccapurple;
+    outline: var(--outline-color);
     outline-style: solid;
     outline-width: 0.2rem;    
 }
@@ -93,9 +127,9 @@ body{
     border: 0rem;
     border-radius: 0.3rem;
     /*Neumorphism button*/
-    background-color: #CCA43B;
-    box-shadow:  2px 2px 0px #a78630, -1px -1px 0px #f1c246;
-    color: #E5E5E5;
+    background-color: var(--button-bg-color-secundary);
+    box-shadow:  2px 2px 0px var(--button-secondary-shadow-left), -1px -1px 0px var(--button-secondary-shadow-right);
+    color: var(--button-text-color-secondary);
 }
 .col:nth-child(2) button svg{
     height: 1.4rem;
@@ -106,17 +140,17 @@ body{
     border: 0rem;
     border-radius: 0.3rem;
     /*Neumorphism button*/
-    background: #E5E5E5;
-    box-shadow: 2px 2px 0px #bcbcbc, -1px -1px 0px #ffffff;
-    color: #242F40;
+    background: var(--button-bg-color-primary);
+    box-shadow: 2px 2px 0px var(--button-primary-shadow-left), -1px -1px 0px var(--button-primary-shadow-right);
+    color: var(--button-text-color-primary);
 }
 .col:nth-child(1) button:hover, .col:nth-child(1) button:focus{
     cursor: pointer;
     font-weight: bold;
-    color: #E5E5E5;
+    color: var(--button-text-color-secondary);
     /*Neumorphism buttons*/
-    background-color: #CCA43B;
-    box-shadow:  2px 2px 0px #a78630, -1px -1px 0px #f1c246; 
+    background-color: var(--button-bg-color-secundary);
+    box-shadow:  2px 2px 0px var(--button-secondary-shadow-left), -1px -1px 0px var(--button-secondary-shadow-right); 
     /*background: linear-gradient(315deg, #b89435, #daaf3f);
     box-shadow:  -1px -1px 1px #a78630, 1px 1px 1px #f1c246;*/
 }
@@ -125,9 +159,9 @@ body{
     cursor: pointer;
     font-weight: bold;
     /*Neumorphism buttons*/
-    background: #E5E5E5;
-    box-shadow: 2px 2px 0px #bcbcbc, -1px -1px 0px #ffffff;
-    color: #242F40;
+    background: var(--button-bg-color-primary);
+    box-shadow: 2px 2px 0px var(--button-primary-shadow-left), -1px -1px 0px var(--button-primary-shadow-right);
+    color: var(--button-text-color-primary);
 }
 /*Hover and focus buttons */
 .col:nth-child(2) button:hover svg, .col:nth-child(2) button:focus svg{
@@ -164,8 +198,8 @@ body{
   width: 0.5rem;
   height: 0.5rem;
   margin-right: 1rem;
-  background: #242F40;
-  color: #E5E5E5;
+  background: var(--li-before-bg-color);
+  color: var(--li-before-text-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -185,7 +219,7 @@ body{
 }
 .col:nth-child(3) li{
     font-size: 1rem;
-    color: lightgreen;
+    color: var(--li-result-text-color);
     transition: 0.2s ease-out;
 }
 .item-list{
@@ -198,15 +232,15 @@ footer{
     font-size: 1.2rem;
 }
 footer a{
-    color: #E5E5E5;
+    color: var(--link-github-color);
     text-decoration: none;
 }
 footer a:hover{
-    color: #CCA43B;
+    color: var(--link-github-hover-color);
     font-weight: bolder;
 }
 footer a:hover + svg{
-    fill: #CCA43B !important;
+    fill: var(--link-github-hover-color) !important;
     transform: rotate( 360deg );
 }
 footer p{
@@ -219,6 +253,7 @@ footer i{
     align-self: flex-end;
 }
 footer svg{
+    fill: var(--link-github-color) !important;
     height: 2.3rem;
     margin-left: -0.3rem;
     transition: transform 0.7s ease-in-out;
@@ -255,7 +290,7 @@ footer svg{
 
 .toggle-container{
     position: absolute;
-    right: 5rem;
+    right: 0rem;
     top: 2rem;
 }
 #toggle_checkbox{
@@ -316,7 +351,7 @@ label{
     left: 0.45rem;
     width: 1.5rem;
     height: 1.5rem;
-    background-color: red;
+    background-color: #E9DAC1;
     border-radius: 50%;
     transition: 0.3s ease background-color;
 }
